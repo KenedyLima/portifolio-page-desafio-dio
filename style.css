@@ -1,0 +1,273 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Bitter", sans-serif;
+  color: #27272a;
+  overflow-x: hidden;
+}
+
+.top-header {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    45deg,
+    #0891b2,
+    #0369a1,
+    #1e40af,
+    #4f46e5,
+    #3730a3
+  );
+  background-size: 400%;
+  animation: backgroundTransition 8s ease-in-out infinite;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HEADER CONTENT */
+
+.top-header-content {
+  font-weight: 500;
+  color: #dbeafe;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+
+.top-header-content h1 {
+  margin-bottom: 2.4rem;
+  font-style: italic;
+}
+
+.top-header-content h2 {
+  margin-bottom: 4.8rem;
+}
+
+/* SOCIAL LINKS */
+
+.social-links {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.social-links a:link,
+.social-links a:visited {
+  display: inline-block;
+  padding: 1.8rem 3.6rem;
+  border: 1px solid #dbeafe;
+  text-decoration: none;
+  color: #dbeafe;
+  font-size: 1.8rem;
+  font-weight: 500;
+  transition: 0.2s ease-in-out;
+}
+
+.social-links a:hover,
+.social-links a:active {
+  color: #27272a;
+  background-color: #dbeafe;
+}
+
+/* ICONS LIST */
+
+.stack-icons {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15rem;
+}
+
+.icon {
+  width: 5rem;
+  height: 5rem;
+}
+
+/* NAV */
+
+.nav-links {
+  gap: 1.2rem;
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.nav-item a {
+  font-size: 2.4rem;
+  text-decoration: none;
+  color: #dbeafe;
+  text-transform: uppercase;
+}
+
+/* MENU NATURAL STATE*/
+
+.checkbox,
+.trace {
+  transition: 0.3s ease-in-out;
+}
+
+.checkbox {
+  width: 12rem;
+  height: 12rem;
+  cursor: pointer;
+  background-color: transparent;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* TRACES */
+
+.trace {
+  width: 50%;
+  height: 0.4rem;
+  background-color: #dbeafe;
+  position: absolute;
+  top: 3rem;
+}
+
+.trace:nth-child(1) {
+  top: 4rem;
+}
+
+.trace:nth-child(2) {
+  top: 6rem;
+}
+
+.trace:nth-child(3) {
+  top: 8rem;
+}
+
+#toggle {
+  display: none;
+}
+
+/* BUBBLE NATURAL STATE*/
+
+.bubble-background {
+  content: "";
+  width: 15rem;
+  height: 15rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-bottom-left-radius: 100%;
+  z-index: 5;
+  transition: 0.2s ease-in-out;
+}
+
+/* ANIMATIONS */
+
+@keyframes backgroundTransition {
+  0% {
+    background-position: 0% 20%;
+  }
+
+  50% {
+    background-position: 80% 10%;
+  }
+
+  100% {
+    background-position: 0% 20%;
+  }
+}
+
+@keyframes navDisplayAnimation {
+  0% {
+    opacity: 0.25;
+  }
+
+  25% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* NAV CONTAINER WHEN #toggle:checked*/
+
+#toggle:checked ~ .nav-links {
+  z-index: 100;
+  opacity: 1;
+  display: flex;
+}
+/* TRACES WRAPPER WHEN #toggle:checked */
+
+#toggle:checked + .checkbox {
+  background-color: #dbeafe;
+}
+#toggle:checked + .checkbox .trace {
+  background-color: black;
+}
+
+/* TRACES WHEN #toggle:checked */
+
+#toggle:checked + .checkbox .trace:nth-child(1) {
+  transform: rotate(45deg);
+  top: 6rem;
+}
+
+#toggle:checked + .checkbox .trace:nth-child(2),
+#toggle:checked + .checkbox .trace:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 6rem;
+}
+
+/* BUBBLE WHEN #toggle:checked */
+
+#toggle:checked ~ .bubble-background {
+  box-shadow: 115px -800px 0px 100vmax #1e40afe8;
+  background-color: #1e40afe8;
+}
+
+/* MAIN CONTENT */
+
+main {
+  padding: 12.8rem;
+}
+
+.inform {
+  display: flex;
+  gap: 7.2rem;
+  justify-content: center;
+  margin-bottom: 9.6rem;
+}
+
+.inform img {
+  width: 30rem;
+  height: 30rem;
+}
+
+.inform p {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
